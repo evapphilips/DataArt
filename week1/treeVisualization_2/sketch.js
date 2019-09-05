@@ -47,13 +47,12 @@ function draw(){
     }else{
         i++
     }
-
 }
 
 function drawDataPoint(i){
-
+  
     push();
-    translate(width/2, height/2);
+    translate(map(i, 0, growthScale.length, 0, width), height/2);
 
     // write the data in the center of the rings
     fill(255);
@@ -65,9 +64,9 @@ function drawDataPoint(i){
 
     // draw each data point as a circle with radius mapped to the rind size
     //stroke(map(i, 0, growthScale.length, 0, 255));
-    stroke(0);
+    noStroke();
     strokeWeight(0.125);
-    noFill();
+    fill(0, 5);
     //background(220, 5);
     ellipse(0, 0, growthScale[i], growthScale[i]);
 

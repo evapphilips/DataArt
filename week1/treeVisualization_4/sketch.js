@@ -37,39 +37,20 @@ function setup(){
 
 function draw(){
 
-    // show each data point one at a time
-    drawDataPoint(i);
-
-    // move through the entire data set
-    if(i>growthScale.length){
-        noLoop(); // stop the animation
-        console.log("all done");
-    }else{
-        i++
-    }
-
-}
-
-function drawDataPoint(i){
-
+    background(255, 20);
+    index = floor(map(mouseX, 0, width, 0, growthScale.length));
+    console.log(index);
     push();
-    translate(width/2, height/2);
+    translate(0, height / 2);
+    fill(0);
+    rectMode(CENTER);
+    rect(map(index, 0, growthScale.length, 0, width), 0, 100, growthScale[index]);
 
-    // write the data in the center of the rings
+    //ellipse(map(index, 0, growthScale.length, 0, width), 0, 100, 100);
     fill(255);
     noStroke();
-    ellipse(0, 0, 100, 100);
-    fill(0);
     textSize(32);
-    text(timeline[i], -40, 10);
-
-    // draw each data point as a circle with radius mapped to the rind size
-    //stroke(map(i, 0, growthScale.length, 0, 255));
-    stroke(0);
-    strokeWeight(0.125);
-    noFill();
-    //background(220, 5);
-    ellipse(0, 0, growthScale[i], growthScale[i]);
-
+    text(timeline[index], map(index, 0, growthScale.length, 0, width) - 40, 10);
     pop();
+
 }
