@@ -11,3 +11,7 @@
 - [Visualization 6](https://evapphilips.github.io/DataArt/week1/treeVisualization_6/)
 
 #### Week 2&3: 100 Days of Making Visualizations
+- [100 Days of Gernative Patterns, Visual 1](https://evapphilips.github.io/DataArt/week2&3/patternVisuals/patternPostedVsViews/)
+- [100 Days of Gernative Patterns, Visual 2](https://evapphilips.github.io/DataArt/week2&3/patternVisuals/patternCircleGraph/)
+- [100 Days of Analog Food Porn, Visual 1](https://evapphilips.github.io/DataArt/week2&3/foodVisuals/foodPostedVsLikes/)
+- [100 Days of Analog Food Porn, Visual 2](https://evapphilips.github.io/DataArt/week2&3/foodVisuals/foodCircleGraph/)
