@@ -9,3 +9,5 @@
 - [Visualization 4](https://evapphilips.github.io/DataArt/week1/treeVisualization_4/)
 - [Visualization 5](https://evapphilips.github.io/DataArt/week1/treeVisualization_5/)
 - [Visualization 6](https://evapphilips.github.io/DataArt/week1/treeVisualization_6/)
+
+#### Week 2&3: 100 Days of Making Visualizations
