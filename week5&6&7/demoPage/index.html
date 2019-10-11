@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Divided Messaging</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.js"></script>
+        <script src="sketch.js"></script>
+    </head>
+
+    <body style="background-color: #F9A7BC; font-family:Verdana, Geneva, Tahoma, sans-serif" > 
+        <div>
+            <canvas id="canvas" style="position:absolute; top:0%; left:0%; height: 100%; width: 50%; background-color: teal">         
+            </canvas>
+            <canvas id="canvas2" style="position:absolute; top:0%; left:0%; height: 100%; width: 100%; background-color: white;">         
+            </canvas>
+            <h1 style="position: relative; top:0%;">How divided is our messaging?</h1>
+            <h4 id="searchTag" style="position: absolute; top:0%; left: 73%;">search</h4>
+            <h4 id="compareTag" style="position: absolute; top:0%; left: 83%; color:#DEE1E2">compare</h4>
+            <!--<h4 style="position: absolute; top:0%; left: 93%; color:#DEE1E2">cloud</h4>
+            -->
+            
+        </div>
+        <div>
+            <input id="field" type="text" value="" style="position: absolute; width: 20%; height: 5%; top: 87%; left: 40%; border-radius: 6px; padding: 12px 20px; text-align: center"></input>
+            <input id="submit" type="submit" style="position: absolute; width:10%; height: 2.5%; top:95%; left:45%">
+        </div>
+        <div >
+            <font id="lNum" style="position: absolute; top: 35%; left:15%; width:20%; text-align:center ;font-size: 100px;"></font>
+            <font id="rNum" style="position: absolute; top: 35%; left:65%; width:20%; text-align:center ;font-size: 100px;"></font>
+        </div>
+        
+        
+        
+        
+    </body>
+</html>
