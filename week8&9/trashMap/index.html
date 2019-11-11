@@ -1,0 +1,287 @@
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>DSNY Trash Map</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.css' rel='stylesheet' />
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        #map {
+            position: absolute;
+            top: 5%;
+            width: 100%;
+            height: 95%;
+        }
+
+        .trash-select {
+            display: inline-block;
+            padding-right: 5%;
+        }
+
+        .select-selected {
+            background-color: DodgerBlue;
+            border: none;
+            font-size: 16px;
+            width: 200px;
+            height: 5%;
+
+        }
+
+        .trashYear-select {
+            width: 200px;
+            height: 5%;
+        }
+
+        .slider-container {
+            display: inline-block;
+            padding-right: 5%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map"></div>
+    <div class="trash-select">
+        <select class="select-selected" id="trashTypeOption">
+            <option value="0">Default type: Refuse</option>
+            <option value="1">Refuse</option>
+            <option value="2">Metal/Glass/Plastic</option>
+            <option value="3">Paper</option>
+            <option value="4">Compost</option>
+        </select>
+    </div>
+    <div class="trash-select">
+        <select class="select-selected" id="trashYearOption">
+            <option value="0">Default year: 2019</option>
+            <option value="1">2019</option>
+            <option value="2">2018</option>
+            <option value="3">2017</option>
+            <option value="4">2016</option>
+            <option value="5">2015</option>
+            <option value="6">2014</option>
+            <option value="7">2013</option>
+            <option value="8">2012</option>
+            <option value="9">2011</option>
+            <option value="10">2010</option>
+        </select>
+    </div>
+    <div class="slider-container">
+        <input id='slider' type='range' min='0' max='11' step='1' value='0' />
+        <label id='monthLabel'>January</label>
+    </div>
+
+    <script>
+
+        // access tokens and styles
+        mapboxgl.accessToken = "" // * INSERT API TOKEN * //
+        var mapboxStyleUrl = '' // * INSERT STYLE URL * //
+        var openDataToken = "" // * INSERT API TOKEN * //
+
+        // when the page first loads, run the init function
+        window.addEventListener('load', init);
+
+        // define the init function
+        function init() {
+            // variables
+            var districts;
+            var population;
+
+            // declare the map object
+            const map = new mapboxgl.Map({
+                container: 'map',
+                style: mapboxStyleUrl,
+                center: [-74, 40.7],
+                minZoom: 2,
+                zoom: 10
+            })
+
+            // when the page first loads, load the DSNY District shape geojson
+            Promise.all([
+                d3.json('../data/DSNYDistricts.geojson'),
+                d3.json('../data/population.geojson')
+            ]).then(data => {
+            // d3.json('../data/DSNYDistricts.geojson').then(data => {
+                // save the district shape data in disctricts variable
+                districts = data[0];
+                population = data[1];
+                console.log(districts);
+                console.log(population);
+
+                // when the map loads
+                map.on('load', () => {
+                    // when the map first loads, initiate the type, year and month to default settings
+                    var type = "Refuse";
+                    var year = "2019";
+                    var month = "01";
+
+                    // when the map first loads, make a new trash layer with the default settings
+                    makeNewTrashLayer();
+
+                    // when a trash dropdown/slider is changed, change as appropriate 
+                    // add event listeners here
+
+                    // if year or month are changed, make a new trash layer
+                    function makeNewTrashLayer() {
+                        // make tonnage url with the appropriate type, year, and month values
+                        var tonnageURL = "https://data.cityofnewyork.us/resource/ebb7-mvp5.geojson?month=" + year + "%20/%20" + month + "&$$app_token=" + openDataToken;
+
+                        // load tonnage data
+                        d3.json(tonnageURL).then(d => {
+                            // store data into objects
+                            const tonnage = d;
+
+                            // get tonnage per distict, into the disctrict object
+                            districts.features.forEach(district => {
+                                tonnage.features.forEach(ton => {
+                                    population.features.forEach(pop => {
+                                        if (district.properties.districtcode === ton.properties.borough_id + ton.properties.communitydistrict && district.properties.districtCode === pop.properties.districtcode) {
+                                            // only load the appropriate trash type data
+                                            if (type === "Refuse") {
+                                                district.properties.tonsTrash = parseInt(ton.properties.refusetonscollected)/parseInt(pop.properties._2010_population);
+                                            } else if (type === "Metal/Glass/Plastic") {
+                                                district.properties.tonsTrash = parseInt(ton.properties.mgptonscollected)/parseInt(pop.properties._2010_population);
+                                            } else if (type === "Paper") {
+                                                district.properties.tonsTrash = parseInt(ton.properties.papertonscollected)/parseInt(pop.properties._2010_population);
+                                            } else if (type === "Compost") {
+                                                district.properties.tonsTrash = parseInt(ton.properties.resorganicstons)/parseInt(pop.properties._2010_population);
+                                            }
+                                            // add population 
+                                            district.properties.population = parseInt(pop.properties._2010_population); // 2010 since all the years are 2010 or later
+                                        }
+                                    })
+                                })
+                            })
+
+                            console.log(districts)
+
+                            // ** CHANGE IF NULL THEN CHANGE TO ZERO ** //
+                            // find the max value collected in a disctrict
+                            let maxVal = d3.max(districts.features, m => m.properties.tonsTrash);
+
+                            // create a map source for this layer
+                            map.addSource('district-trash', { type: 'geojson', data: districts });
+
+                            // add the trash map layer
+                            map.addLayer({
+                                'id': 'district-trash-layer',
+                                'type': 'fill',
+                                'source': 'district-trash',
+                                'paint': {
+                                    'fill-color': '#088',
+                                    'fill-opacity': [
+                                        'interpolate',
+                                        ['linear'],
+                                        ['get', 'tonsTrash'],
+                                        0, 0,
+                                        maxVal, 1
+                                    ],
+                                }
+                            })
+
+                            // initiate popups
+                            const popup = new mapboxgl.Popup();
+
+                            // add interactivity to see a popup with info about a district
+                            map.on('mousemove', 'district-trash-layer', (e) => {
+                                popup.setLngLat(e.lngLat)
+                                    .setHTML(e.features[0].properties.district + ": " + e.features[0].properties.tonsTrash + ' Tons/Person')
+                                    .addTo(map);
+                            })
+
+                            // change the cursor style to a UI indicator
+                            map.on('mouseenter', 'district-trash-layer', () => {
+                                map.getCanvas().style.cursor = 'pointer'
+                            })
+
+                            // change the cursor style back
+                            map.on('mouseleave', 'district-trash-layer', () => {
+                                map.getCanvas().style.cursor = ''
+                                popup.remove();
+                            })
+                        });
+                    }
+
+                    // add event listener for the trash type
+                    var trashTypeOption = document.getElementById("trashTypeOption");
+                    trashTypeOption.addEventListener('change', updateTrashType);
+                    function updateTrashType() {
+                        // access dropdown value selected
+                        let index = trashTypeOption.value
+                        console.log(trashTypeOption[index].innerHTML);
+                        // assign a new trash type according to selected value
+                        type = trashTypeOption[index].innerHTML;
+                        // remove current trash layer
+                        map.removeLayer('district-trash-layer');
+                        map.removeSource('district-trash')
+                        // create new trash layer
+                        makeNewTrashLayer();
+                    }
+
+                    // //if type is changed, updated the current trash layer properties
+                    // function updateCurrentTrashLayer() {
+                    //     map.getSource('district-trash').setPaintProperty();
+                    // }
+
+                    // add event listener for the year
+                    var trashYearOption = document.getElementById("trashYearOption");
+                    trashYearOption.addEventListener('change', updateTrashYear);
+                    function updateTrashYear() {
+                        // access dropdown value selected
+                        let index = trashYearOption.value
+                        console.log(trashYearOption[index].innerHTML);
+                        // assign a new year according to selected value
+                        year = trashYearOption[index].innerHTML;
+                        // remove current trash layer
+                        map.removeLayer('district-trash-layer');
+                        map.removeSource('district-trash')
+                        // create new trash layer
+                        makeNewTrashLayer();
+                    }
+
+                    // add event listener for the month
+                    var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+                    var monthSlider = document.getElementById("slider");
+                    var monthLabel = document.getElementById('monthLabel')
+                    monthSlider.addEventListener('change', updateTrashMonth);
+                    function updateTrashMonth() {
+                        // access slider value selected
+                        let index = monthSlider.value;
+                        // change month label
+                        monthLabel.innerHTML = months[index];
+                        // assign a new month according to selected value
+                        let val = parseInt(monthSlider.value) + 1;
+                        if (monthSlider.value < 9) {
+                            month = "0" + val;
+                            console.log(month)
+                        } else {
+                            month = val.toString();
+                            console.log(month)
+                        }
+                        // remove current trash layer
+                        map.removeLayer('district-trash-layer');
+                        map.removeSource('district-trash')
+                        // create new trash layer
+                        makeNewTrashLayer();
+                    }
+
+
+                });
+            }).catch(e => {
+                console.log(e);
+            })
+
+
+        }
+    </script>
+</body>
+
+</html>

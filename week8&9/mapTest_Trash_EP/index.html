@@ -1,0 +1,305 @@
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>DSNY Map</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.css' rel='stylesheet' />
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            position: absolute;
+            top: 5%;
+            bottom: 0;
+            width: 100%;
+            height: 95%;
+        }
+
+        /* Style The Dropdown Button */
+        .dropbtn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 5px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            height: 5%;
+            width: 15vw;
+        }
+
+
+        #drpdwn-type {
+            position: absolute;
+            display: inline-block;
+        }
+
+        #drpdwn-year {
+            position: absolute;
+            display: inline-block;
+            left: 33%;
+        }
+
+        #drpdwn-month {
+            position: absolute;
+            display: inline-block;
+            left: 66%;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .dropbtn {
+            background-color: #3e8e41;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="map"></div>
+    <div class="dropdown" id="drpdwn-type">
+        <button class="dropbtn">Trash Type</button>
+        <div class="dropdown-content" id="optionType">
+            <option value="refuse"><a href="#">Refuse</a></option>
+            <a href="#">Recycling</a>
+            <a href="#">Paper</a>
+            <a href="#">Compost</a>
+        </div>
+    </div>
+    <div class="dropdown" id="drpdwn-year">
+        <button class="dropbtn">Year</button>
+        <div class="dropdown-content" id="optionYear"> 
+            <a href="#">2019</a>
+            <a href="#">2018</a>
+            <a href="#">2017</a>
+            <a href="#">2016</a>
+        </div>
+    </div>
+    <div class="dropdown" id="drpdwn-month">
+        <button class="dropbtn">Month</button>
+        <div class="dropdown-content" id="optionMonth">
+            <a href="#">1</a>
+            <a href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">4</a>
+            <a href="#">5</a>
+            <a href="#">6</a>
+            <a href="#">7</a>
+            <a href="#">8</a>
+            <a href="#">9</a>
+            <a href="#">10</a>
+            <a href="#">11</a>
+            <a href="#">12</a>
+        </div>
+    </div>
+
+
+    <script>
+
+        // things to change 
+        // https://www.w3schools.com/howto/tryit.asp?filename=tryhow_custom_select
+        // https://docs.mapbox.com/mapbox-gl-js/example/timeline-animation/
+
+
+        // initial varables
+        var maxVal;
+        var tonnageURL;
+        var openDataToken = "" // * INSERT API TOKEN * //
+
+        // include access token
+        mapboxgl.accessToken = "" // * INSERT API TOKEN * //
+
+        // declare the map object
+        const map = new mapboxgl.Map({
+            container: 'map',
+            style: '', // * INSERT STYLE URL * //
+            center: [-74, 40.7],
+            minZoom: 2,
+            zoom: 10
+        });
+
+        // initiate type, month and year
+        var type = "Refuse";
+        var month = "10";
+        var year = '2019';
+
+
+        // load geojson data once base map has loaded
+        map.on('load', () => {
+            // access type dropdown and add an event listener
+            var typeDropdown = document.getElementById("optionType");
+            typeDropdown.addEventListener("click", selectType);
+
+            // when you select a trash type, set the type
+            function selectType(e) {
+                console.log(e.value)
+                //console.log("look here: " + document.getElementById("optionType"))
+                type = "Paper"  // **  how to get dropdown innerHTML and how to deal with nulls?
+                console.log(type)
+                //console.log("hi")
+
+                map.removeLayer('district-trash-layer');
+                map.removeSource('district-trash')
+                updateLayer();
+            }
+
+            // access year dropdown and add event listener
+            var yearDropdown = document.getElementById("optionYear");
+            yearDropdown.addEventListener("click", selectYear);
+
+            // when you select a trash type, set the type
+            function selectYear() {
+                // console.log(document.getElementById("option").innerHTML)
+                year = "2017"  // **  how to get dropdown innerHTML and how to deal with nulls?
+                console.log(year)
+                //console.log("hi")
+
+                map.removeLayer('district-trash-layer');
+                map.removeSource('district-trash')
+                updateLayer();
+            }
+
+            // access month dropdown and add event listener
+            var monthDropdown = document.getElementById("optionMonth");
+            monthDropdown.addEventListener("click", selectMonth);
+
+            // when you select a trash type, set the type
+            function selectMonth() {
+                // console.log(document.getElementById("option").innerHTML)
+                month = "02"  // **  how to get dropdown innerHTML and how to deal with nulls?
+                console.log(month)
+                //console.log("hi")
+
+                map.removeLayer('district-trash-layer');
+                map.removeSource('district-trash')
+                updateLayer();
+            }
+
+            // when page first loads, show default layer
+            updateLayer();
+
+            // combine data and make a the appropriate layer
+            function updateLayer() {
+                // make url to access tonnage data
+                tonnageURL = "https://data.cityofnewyork.us/resource/ebb7-mvp5.geojson?month=" + year + "%20/%20" + month + "&$$app_token=" + openDataToken;
+
+                // load data
+                Promise.all([
+                    d3.json('../data/DSNYDistricts.geojson'),
+                    d3.json(tonnageURL),
+                    //d3.json('https://data.cityofnewyork.us/resource/xi7c-iiu2.geojson?$$app_token=' + openDataToken)
+                ]).then(data => {
+                    // place data into objectsAAA
+                    const districts = data[0];
+                    const tonnage = data[1];
+                    //const population = data[2];
+
+                    //console.log(population);
+
+                    //we need to get the tonnage per district from the tonnage data into the disctric data
+                    districts.features.forEach(district => {
+                        tonnage.features.forEach(ton => {
+                            if (district.properties.districtcode === ton.properties.borough_id + ton.properties.communitydistrict) {
+                                district.properties.tonsMGP = parseInt(ton.properties.mgptonscollected); /// divided my district population
+                                district.properties.tonsPaper = parseInt(ton.properties.papertonscollected);
+                                district.properties.tonsRefuse = parseInt(ton.properties.refusetonscollected);
+                                district.properties.tonsOrganic = parseInt(ton.properties.resorganicstons);
+                            }
+                        })
+                    })
+                    console.log(districts);
+
+                    // find the max value collected in a district
+                    if (type === "Refuse") {
+                        maxVal = d3.max(districts.features, d => d.properties.tonsRefuse);
+                    } else if (type === "Recycling") {
+                        maxVal = d3.max(districts.features, d => d.properties.tonsMGP);
+                    } else if (type === "Paper") {
+                        maxVal = d3.max(districts.features, d => d.properties.tonsPaper);
+                    } else if (type === "Compost") {
+                        maxVal = d3.max(districts.features, d => d.properties.tonsOrganic);
+                    }
+
+                    //console.log(maxRefuse);
+
+
+
+                    // map needs source data before it can show anything. source needs an id, type and data
+                    map.addSource('district-trash', { type: 'geojson', data: districts });
+
+                    // map layer styles the source. see the mapbox style specification for syntax. 
+                    // layer needs an id, type, source and a style
+
+
+                    map.addLayer({
+                        'id': 'district-trash-layer',
+                        'type': 'fill',
+                        'source': 'district-trash',
+                        'paint': {
+                            'fill-color': '#088',
+                            'fill-opacity': [
+                                'interpolate',
+                                ['linear'],
+                                ['get', 'tons' + type],
+                                0, 0,
+                                maxVal, 1
+                            ],
+                        }
+                    })
+
+                    // initiate popups with more information
+                    const popup = new mapboxgl.Popup();
+
+                    // add interactivity to see a popup with info about a disctict
+                    map.on('mousemove', 'district-trash-layer', (e) => {
+                        popup.setLngLat(e.lngLat)
+                            .setHTML(e.features[0].properties.district + ": " + e.features[0].properties.tonsRefuse + ' Tons')
+                            .addTo(map);
+                    })
+
+                    // change the cursor style to a UI indicator
+                    map.on('mouseenter', 'district-trash-layer', () => {
+                        map.getCanvas().style.cursor = 'pointer'
+                    })
+
+                    // change the cursor style back
+                    map.on('mouseleave', 'district-trash-layer', () => {
+                        map.getCanvas().style.cursor = ''
+                        popup.remove();
+                    })
+                }).catch(e => {
+                    console.log(e);
+                })
+            }
+        })
+    </script>
+</body>
+
+</html>

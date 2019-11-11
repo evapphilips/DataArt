@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <meta charset='utf-8' />
+        <title>Parsing Population</title>
+        <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+        <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.js'></script>
+        <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.css' rel='stylesheet' />
+        <script src="https://d3js.org/d3.v5.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.1/addons/p5.dom.min.js"></script>
+        
+        <script>
+                // load data from open data
+                d3.json('https://data.cityofnewyork.us/resource/xi7c-iiu2.geojson').then(data => {
+                    // save input data
+                    var population = data;
+                    console.log(population);
+    
+                    // get borough id's
+                    boroughCode = ["Manhatten", "Bronx", "Brooklyn", "Queens", "Staten Island"]
+    
+                    // add community disctrict code in the same form as the trash data
+                    population.features.forEach(p => {
+                        for(let i=0; i<boroughCode.length; i++){
+                            if(p.properties.borough === boroughCode[i]){
+                                let bor = i + 1;
+                                let code;
+                                if(p.properties.cd_number<10){
+                                    code = bor + "0" + p.properties.cd_number
+                                }else{
+                                    code = bor + p.properties.cd_number
+                                }
+                                p.properties.districtCode = code
+                            }
+                        }
+                    })
+                    console.log(population)
+                    save(population, 'population.geojson')
+                })   
+    
+            </script>
+        
+    </head>
+    <body>
+        
+    </body>
+</html>

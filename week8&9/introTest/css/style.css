@@ -1,0 +1,100 @@
+* {         
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* makes it so that the padding and margins are not included in the box size */
+}
+
+div{
+    font-size: 12px;
+    padding: 20px;
+    position: absolute;
+    top: 12vh;
+    right: 10vw
+}
+
+body {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #777;
+    padding: 30px;
+}
+
+.header {
+    height: 95vh;
+    background-color: whitesmoke;
+
+    position: relative;
+}
+
+.text-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    
+}
+
+.heading-primary {
+    color: black;
+    text-transform: uppercase;
+}
+
+.heading-primary-main {
+    display: block;
+    font-size: 60px;
+    font-weight: 400;
+    letter-spacing: 35px;
+
+    animation: moveInDown 1s ease-out 
+}
+
+.heading-primary-sub {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 17.4px;
+
+    animation: moveInDown .5s ease-out 
+
+} 
+
+@keyframes moveInDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+.btn:link,
+.btn:visited {
+    text-decoration: none;
+    display: inline-block;
+    color: gray;
+    font-size: 40px;
+    position: absolute;
+    bottom: -180%;
+    left: 45%;
+    /* transform: translate(-50%, -50%); */
+}
+
+.btn:hover {
+    color: rgb(92, 91, 91);
+    transform: translateY(-3px);
+    
+}
+
+.btn:active {
+    transform: translateY(1px);
+}
+
+/* .btn:active .heading-primary-main {
+    animation: moveInDown 2s;
+}
+ */
