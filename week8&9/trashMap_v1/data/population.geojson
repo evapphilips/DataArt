@@ -462,7 +462,8 @@
         "_1970_population": "7706",
         "_2010_population": "60978",
         "cd_name": "Battery Park City, Tribeca",
-        "borough": "Manhattan"
+        "borough": "Manhattan",
+        "districtCode": "101"
       }
     },
     {
@@ -476,7 +477,8 @@
         "_1970_population": "84337",
         "_2010_population": "90016",
         "cd_name": "Greenwich Village, Soho",
-        "borough": "Manhattan"
+        "borough": "Manhattan",
+        "districtCode": "102"
       }
     },
     {
@@ -490,7 +492,8 @@
         "_1970_population": "181845",
         "_2010_population": "163277",
         "cd_name": "Lower East Side, Chinatown",
-        "borough": "Manhattan"
+        "borough": "Manhattan",
+        "districtCode": "103"
       }
     },
     {
@@ -504,7 +507,8 @@
         "_1970_population": "83601",
         "_2010_population": "103245",
         "cd_name": "Chelsea, Clinton",
-        "borough": "Manhattan"
+        "borough": "Manhattan",
+        "districtCode": "104"
       }
     },
     {
@@ -518,7 +522,8 @@
         "_1970_population": "31076",
         "_2010_population": "51673",
         "cd_name": "Midtown Business District",
-        "borough": "Manhattan"
+        "borough": "Manhattan",
+        "districtCode": "105"
       }
     },
     {
@@ -532,7 +537,8 @@
         "_1970_population": "122465",
         "_2010_population": "142745",
         "cd_name": "Stuyvesant Town, Turtle Bay",
-        "borough": "Manhattan"
+        "borough": "Manhattan",
+        "districtCode": "106"
       }
     },
     {
@@ -546,7 +552,8 @@
         "_1970_population": "212422",
         "_2010_population": "209084",
         "cd_name": "West Side, Upper West Side",
-        "borough": "Manhattan"
+        "borough": "Manhattan",
+        "districtCode": "107"
       }
     },
     {
@@ -560,7 +567,8 @@
         "_1970_population": "200851",
         "_2010_population": "219920",
         "cd_name": "Upper East Side",
-        "borough": "Manhattan"
+        "borough": "Manhattan",
+        "districtCode": "108"
       }
     },
     {
@@ -574,7 +582,8 @@
         "_1970_population": "113606",
         "_2010_population": "110193",
         "cd_name": "Manhattanville, Hamilton Heights",
-        "borough": "Manhattan"
+        "borough": "Manhattan",
+        "districtCode": "109"
       }
     },
     {
@@ -588,7 +597,8 @@
         "_1970_population": "159267",
         "_2010_population": "115723",
         "cd_name": "Central Harlem",
-        "borough": "Manhattan"
+        "borough": "Manhattan",
+        "districtCode": "110"
       }
     },
     {
@@ -602,7 +612,8 @@
         "_1970_population": "154662",
         "_2010_population": "120511",
         "cd_name": "East Harlem",
-        "borough": "Manhattan"
+        "borough": "Manhattan",
+        "districtCode": "111"
       }
     },
     {
@@ -616,7 +627,8 @@
         "_1970_population": "180561",
         "_2010_population": "190020",
         "cd_name": "Washington Heights, Inwood",
-        "borough": "Manhattan"
+        "borough": "Manhattan",
+        "districtCode": "112"
       }
     },
     {

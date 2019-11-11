@@ -1,0 +1,246 @@
+/* #map-container, #filter-container{
+    border: 1px red solid;
+} */
+
+div{
+    /* border: 1px red solid; */
+}
+
+
+/*MAP */
+#map{
+  z-index: 15;
+  height: 80vh;
+  visibility: visible;
+  outline:none;
+}
+
+#map:focus{
+  outline:none;
+}
+
+#map-container{
+    float: left;
+    padding-left: 3%;
+    visibility: visible;
+    margin-top: 1.8%;
+}
+
+.header{
+    font-family: 'Champion-HTF-Welterweight';
+    font-size: 1.5em;
+    margin: 0;
+    padding: 5% 0 5% 0;
+}
+
+
+/*FILTER */
+#filter-container{
+   float:right;
+   padding-right: 3%;
+   visibility: visible;
+}
+
+#monthLabel, #filter-subtitle{
+    font-family: 'Champion-HTF-Lightweight';
+    font-size: 1em;
+    text-transform: uppercase;
+    letter-spacing: 0.125pt;
+}
+
+.slider-container{
+    padding-top: 2%;
+    margin: 0% 0%;
+}
+
+#filter-year{
+    padding-right: 6%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+#filter-month{
+    margin-top:5%;
+    margin-bottom: 5%;
+}
+
+#filter-income{
+    margin-top: 5%;
+    width: 100%;
+}
+
+
+/*DROPDOWN JS */
+/* #showDropdown{
+    display:block;
+} */
+
+/* DROPDOWN BUTTONS*/
+/*the container must be positioned relative:*/
+.custom-select {
+  position: relative;
+  font-family: 'Monotype-PlantinHeadlineMTStd-MdCN';
+}
+
+select{
+  background-color: black;
+   width: 100%;
+   padding: 3px;
+   padding-top: 5px;
+   font-family:'Monotype-PlantinHeadlineMTStd-MdCN', sans-serif;
+   font-size: 0.9em;
+   color: white;
+   letter-spacing: 0.25pt;
+   border: 0;
+   border-radius: 0;
+   height: 30px;
+   line-height: 1.5em;
+  -webkit-appearance: none;
+}
+
+.select-div{
+	width: 170px;
+	height: 30px;
+	overflow: hidden;
+	background: url(arrowhead.png) no-repeat right #363636;
+	border-top:#575757 1px solid;
+	-webkit-border-radius: 4px 4px 4px 4px;
+	 -moz-border-radius: 4px 4px 4px 4px;
+		  border-radius: 4px 4px 4px 4px;
+	-webkit-box-shadow: inset 0 2px 4px rgba(107, 105, 105, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+	 -moz-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+		  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+		  -moz-box-shadow:    0px 8px 3px -9px #000000;
+		  -webkit-box-shadow: 0px 8px 3px -9px #000000;
+		  box-shadow:         0px 8px 3px -9px #000000;
+}
+
+
+/*SLIDER*/
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 30px;
+    background: #000;
+    outline: none;
+    -webkit-transition: .2s;
+    padding: none;
+    margin: none;
+  }
+  
+  .slider:hover {
+    opacity: 1;
+  }
+  
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 30px;
+    background: #737373;
+    cursor: pointer;
+  }
+  
+  .slider::-moz-range-thumb {
+    width: 12px;
+    height: 30px;
+    background: #9F9F9F;
+    cursor: pointer;
+  }
+
+
+  /*TOGGLE SLIDERS*/
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+  }
+  
+  .switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .income-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: black;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .income-slider:before {
+    position: absolute;
+    content: "";
+    height: 30px;
+    width: 20px;
+    left: 0px;
+    bottom: 0px;
+    background-color: #737373;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .income-slider {
+    background-color:#AAA;
+  }
+  
+  input:focus + .income-slider {
+    box-shadow: 0 0 0px #AAA;
+  }
+  
+  input:checked + .income-slider:before {
+    -webkit-transform: translateX(40px);
+    -ms-transform: translateX(40px);
+    transform: translateX(40px);
+  }
+
+  /* LEGEND SECTION */
+
+  #legend-hr{
+    height: 10%;
+    border-bottom: 6px solid black;
+    z-index: -1;
+    margin: 5% 0% 3% 0;
+  }   
+
+  .legend-color{
+      width: 30%;
+  }
+
+  .legend-text{
+    font-size: 0.9em;
+    line-height: 1em;
+    font-family: 'Monotype-PlantinHeadlineMTStd-MdCN';
+    padding-top: 2%;
+  }
+
+  #legend-type-div{
+      margin-top: 5%;
+  }
+
+  #legend-div-text{
+      padding-top: 2%;
+  }
+
+  #legend-detail-div{
+    margin-top: 10%;
+}
+
+#legend-hr-2{
+    padding: 5% 0 5% 0;
+    height: 10%;
+    border-bottom: 6px solid black;
+    z-index: -1;
+}
+
+.legend-stripe{
+    width: 80%;
+    padding: 0 5% 0 0;
+}

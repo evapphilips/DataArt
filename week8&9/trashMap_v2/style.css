@@ -1,0 +1,255 @@
+@font-face {
+    font-family:'Champion-HTF-Lightweight';
+    src: url('assets/fonts/Champion-HTF-Lightweight.eot');
+    src: url('assets/fonts/Champion-HTF-Lightweight.ttf');
+    format('truetype');
+}
+
+@font-face {
+    font-family:'Champion-HTF-MiddleWeight';
+    src: url('assets/fonts/Champion-HTF-Middleweight.eot');
+    src: url('assets/fonts/Champion-HTF-Middleweight.ttf');
+    format('truetype');
+}
+
+@font-face {
+    font-family:'Champion-HTF-WelterWeight';
+    src: url('assets/fonts/Champion-HTF-Welterweight.eot');
+    src: url('assets/fonts/Champion-HTF-Welterweight.ttf');
+    format('truetype');
+}
+
+@font-face {
+    font-family:'Monotype-PlantinHeadlineMTStd-MdCN';
+    src: url('assets/fonts/Monotype-PlantinHeadlineMTStd-MdCn.eot');
+    src: url('assets/fonts/Monotype-PlantinHeadlineMTStd-MdCn.ttf');
+    format('truetype');
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+html {
+    background-color: #E9E9E9;
+}
+
+body{
+    overflow-y: visible;
+}
+
+
+[class*="col-"] {
+    float: left;
+}
+
+/* GRID - COLUMN */
+
+.col-1 {
+    width: 100%;
+}
+
+.col-3_4{
+    width: 65%
+}
+
+.col-3_5{
+    width: 60%
+}
+
+.col-2{
+    width: 50%;
+}
+
+.col-2_5{
+    width: 33.33%;
+}
+
+.col-4{
+    width: 25%;
+}
+
+.col-6 {
+    width: 16.6666%;
+    /* height: 12.5vh; */
+}
+
+.col-8 {
+    width: 12.5%;
+}
+
+.col-10{
+    width: 10%;
+}
+
+.col-12{
+    width: 8.333%;
+}
+
+.col-24{
+    width: 4.166%;
+}
+
+/*CONTAINER*/
+.container{
+    padding: 3% 3% 0px 3%;
+}
+
+/* NAVBAR */
+.nav-logo-img{
+    width: 20%;
+    z-index: 10;
+}
+
+.nav-title{
+    height: 25%;
+    padding-bottom: 2%;
+}
+
+#nav-hamburger{
+    /* border: red solid 1px; */
+    float:right;
+    cursor: pointer;
+    padding: 0.5vh 0;
+    overflow: hidden;
+}
+
+.nav-hr{
+    height: 25%;
+    border-bottom: 6px solid black;
+    z-index: -1;
+}
+
+.bar1, .bar2{
+    width: 35px;
+    height: 6px;
+    background-color: black;
+    transition: 0.4s;
+}
+
+.bar1{
+    margin-bottom: 1.75vh;
+}
+
+/*ANIMATE BURGER BARS */
+.animate .bar1 {
+    -webkit-transform: rotate(-45deg) translate(-8px, 4.5px);
+    transform: rotate(-45deg) translate(-8px, 4.5px);
+    background-color: white;
+    z-index: 5;
+  }
+
+.animate .bar2{
+    -webkit-transform: rotate(-45deg) translate(-8px, -6px);
+    transform: rotate(45deg) translate(-8px, -6px);
+    background-color: white;
+    z-index: 5;
+}
+
+
+
+/*MENU*/
+#nav-menu{
+    display: none;
+    height: 100vh;
+    overflow:hidden;
+}
+
+/*SLIDING ANIMATION IF WE WANT */
+.animateNav{
+    display: block;
+    background: black;
+    z-index: 3;
+    /* width: 100%; */
+    animation-name: slide;
+    animation-duration: 1s;
+    animation-timing-function: ease;
+    /* animation-iteration-count: infinite; */
+    transform: translate(0, 0);
+    overflow: hidden;
+}
+
+
+@keyframes slide {
+    0% {
+      transform: translate(0, -40%);
+      opacity:.1;
+    }
+    100% {
+      transform: translate(0, 0);
+      opacity:1;
+    }
+  }
+
+
+#gradient-border{
+    width: 100%;
+    position: relative;
+}
+
+.menu-header{
+    color: white;
+    font-family: 'Champion-HTF-WelterWeight';
+    font-size: 4em;
+    letter-spacing: 2pt;
+    padding: 1% 3%;
+    text-transform: capitalize;
+    text-decoration:none;
+}
+
+.menu-header a:link{
+    color: white;
+    text-decoration:none;
+}
+
+.menu-header a:visited{
+    color: white;
+    text-decoration:none;
+}
+
+.menu-header:hover{
+    cursor:pointer;
+    background: -moz-linear-gradient(45deg, #50D279 0%,  #50D279 10%, #FF6E00 15%, #FF6E00 30%,  #276FE1 40%, #276FE1 50%,  #FF84BA 60%); 
+    background: -webkit-linear-gradient(45deg, #50D279 0%,  #50D279 18%, #FF6E00 25%, #FF6E00 40%,  #276FE1 50%, #276FE1 70%,  #FF84BA 75%); 
+    background: linear-gradient(45deg, #50D279 0%,  #50D279 18%, #FF6E00 25%, #FF6E00 40%,  #276FE1 50%, #276FE1 70%,  #FF84BA 75%); 
+    /* clip hackery */
+    -webkit-background-clip: text;
+     -webkit-text-fill-color: transparent;
+}
+
+.menu-hr{
+    border-bottom: 6px solid white;
+    position: relative;
+    left: 3%;
+    margin: 1% 0;
+    width: 94%;
+}
+
+
+/*SCROLL */
+/* width */
+::-webkit-scrollbar {
+    width: 1.5vw;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    /*box-shadow: inset 0 0 5px white; */
+    background: #737373;
+    /* border-radius: 10px; */
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #737373; 
+    /* border-radius: 10px; */
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: black; 
+  }
+
