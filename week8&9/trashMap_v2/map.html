@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>NYC TRASH | MAP</title>
+
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.css' rel='stylesheet' />
+    <script src="https://d3js.org/d3.v5.min.js"></script> <!--GIVING ME ERRORS-->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/dc/1.7.3/dc.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/json3/3.3.2/json3.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!--STYLESHEET-->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mapstyle.css">
+</head>
+
+<body>
+    <!--JS SCRIPT-->
+    <script src="main.js"></script>
+
+    <!--PAGE-->
+    <div class='container'>
+
+        <!--NAVBAR-->
+        <div id='navbar'>
+            <div class='nav-title' class='col-1'>
+                <img src="assets/logo/trash_map_logo_black_2x.png" alt="TRASH | MAP" class='nav-logo-img'
+                    id='nav-logo-map'>
+
+                <div id='nav-hamburger' onclick='openMenu(this)'>
+                    <div class='bar1'></div>
+                    <div class='bar2'></div>
+                </div>
+            </div>
+            <hr class="nav-hr" id='navbar-hr'>
+        </div>
+    </div>
+
+    <!--MENU THAT OPENS UP-->
+    <div id='nav-menu' class='col-1'>
+        <div id='menu-item-1'>
+            <h2 class='menu-header'><a href="track.html">Track Our Trash</a></h2>
+            <hr class='menu-hr'>
+        </div>
+        <div id='menu-item-2'>
+            <h2 class='menu-header'><a href="map.html">Map of Trash</a></h2>
+            <hr class='menu-hr'>
+        </div>
+        <div id='menu-item-3'>
+            <h2 class='menu-header'><a href="better.html">Be Better With Trash</a></h2>
+            <hr class='menu-hr'>
+        </div>
+        <div id='menu-item-4'>
+            <h2 class='menu-header'><a href="source.html">References + Sources</a></h2>
+        </div>
+    </div>
+
+    <!--MAP ON LEFT-->
+    <div id='map-container' class='col-3_4'>
+        <div id="map"></div>
+    </div>
+
+    <!--FILTER ON RIGHT-->
+    <div id='filter-container' class='col-2_5'>
+        <!--TITLE-->
+        <div id='filter-title'>
+            <p class='header'>Filter</p>
+        </div>
+
+        <!--TYPE MENU-->
+        <div id='filter-trash-container' class='filter-div'>
+            <p id='filter-subtitle'>Trash Type</p>
+
+            <!--COMBINED DROPDOWN VS-->
+            <div class="custom-select" id='dropdown-trash-type'>
+                <select class='dropdown-content' class="select-selected" id="trashTypeOption">
+                    <option value="0">Default type: Refuse</option>
+                    <option value="1">Refuse</option>
+                    <option value="2">Metal/Glass/Plastic</option>
+                    <option value="3">Paper</option>
+                    <option value="4">Compost</option>
+                </select>
+            </div>
+        </div>
+
+        <!--YEAR MENU-->
+        <div id='filter-year' class='col-2' class='filter-div'>
+            <p id='filter-subtitle'>YEAR</p>
+
+            <!--COMBINED DROPDOWN VS-->
+            <div class="custom-select" id='dropdown-trash-year'>
+                <select class="select-selected" id="trashYearOption">
+                    <option value="0">Default year: 2019</option>
+                    <option value="1">2019</option>
+                    <option value="2">2018</option>
+                    <option value="3">2017</option>
+                    <option value="4">2016</option>
+                    <option value="5">2015</option>
+                    <option value="6">2014</option>
+                    <option value="7">2013</option>
+                    <option value="8">2012</option>
+                    <option value="9">2011</option>
+                    <option value="10">2010</option>
+                </select>
+            </div>
+
+        </div>
+
+        <!--MONTH SLIDER-->
+        <div id='filter-month' class='col-2' class='slider-container'>
+            <label id='monthLabel'>January</label>
+            <!-- <p id='filter-subtitle'>Month</p> -->
+            <input id='slider' class="slider" type='range' min='0' max='11' step='1' value='0' style="margin: 0px" />
+            <!-- <label id='monthLabel'>January</label> -->
+        </div>
+
+        <!--TOGGLE INCOME-->
+        <div id='filter-income' class='filter-div' class='col-2'>
+            <p id='filter-subtitle'>Income</p>
+            <label class="switch">
+
+                <input type="checkbox">
+                <span class="income-slider"></span>
+            </label>
+
+            <label class="switch">
+                <input type="checkbox" checked>
+                <span class="landfill-slider"></span>
+            </label>
+        </div>
+
+        <!--HR LEGEND-->
+        <div id='legend-hr'></div>
+
+        <!--LEGEND SECTION-->
+        <div id='legend-container' class='col-1'>
+
+            <!--LEGEND TITLE-->
+            <div id='legend-title'>
+                <p class='header'>Legend</p>
+            </div>
+
+            <div id='legend-type-div'>
+                <!--WASTE-->
+                <div class='col-4'><img src="assets/legend/legend_waste_orange_hr.png" alt="legend refuse"
+                        class='legend-color'>
+                    <p class='legend-text'>Refuse</p>
+                </div>
+
+
+                <!--PAPER-->
+                <div class='col-4'><img src="assets/legend/legend_paper_green_hr.png" alt="legend paper"
+                        class='legend-color'>
+                    <p class='legend-text'>Paper</p>
+                </div>
+
+                <!--MPG-->
+                <div class='col-4'><img src="assets/legend/legend_mpg_blue_hr.png" alt="legend mpg"
+                        class='legend-color'>
+                    <p class='legend-text'>Metals<br>Plastic<br>Glass</p>
+                </div>
+
+                <!--REFUSE-->
+                <div class='col-4'><img src="assets/legend/legend_refuse_pink_hr.png" alt="legend waste orange"
+                        class='legend-color'>
+                    <p class='legend-text'>Compost</p>
+                </div>
+            </div>
+
+            <!--HR LEGEND-->
+            <div id='legend-hr-2'></div>
+
+
+            <!--MORE LEGEND-->
+            <div id='legend-detail-div'>
+                <!--WASTE-->
+                <div class='col-4'><img src="assets/legend/legend_lesstrash_hr.png" alt="legend waste orange"
+                        class='legend-color'>
+                    <p class='legend-text'>Less<br>Trash</p>
+                </div>
+
+                <!--PAPER-->
+                <div class='col-4'><img src="assets/legend/legend_moretrash_hr.png" alt="legend waste orange"
+                        class='legend-color'>
+                    <p class='legend-text'>More<br>Trash</p>
+                </div>
+
+                <!--MPG-->
+                <div class='col-4'><img src="assets/legend/legend_less_income_hr.png" alt="legend less income"
+                        class='legend-color'>
+                    <p class='legend-text'>Less<br>Income</p>
+                </div>
+
+                <!--REFUSE-->
+                <div class='col-4'><img src="assets/legend/legend_more_income_hr.png" alt="legend more income"
+                        class='legend-color'>
+                    <p class='legend-text'>More<br>Income</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+<script>
+    // access tokens and styles
+    mapboxgl.accessToken = "" // * INSERT API TOKEN * // EL 
+    var mapboxStyleUrl = '' // * INSERT STYLE URL * //
+    var openDataToken = "" // * INSERT API TOKEN * //
+
+    // when the page first loads, run the init function
+    window.addEventListener('load', init);
+
+    // define the init function
+    function init() {
+        // variables
+        var districts;
+
+        // declare the map object
+        const map = new mapboxgl.Map({
+            container: 'map',
+            style: mapboxStyleUrl,
+            center: [-74, 40.7],
+            minZoom: 1,
+            zoom: 9.75,
+            attributionControl: false
+        })
+
+        // when the page first loads, load the DSNY District shape geojson
+        Promise.all([
+            d3.json('../data/DSNYDistricts.geojson'),
+            d3.json('../data/population.geojson')
+        ]).then(data => {
+            //d3.json('../data/DSNYDistricts.geojson').then(data => {
+            // save the district shape data in disctricts variable
+            districts = data[0];
+            population = data[1];
+            //console.log(districts);
+            //console.log(population);
+
+            // when the map loads
+            map.on('load', () => {
+                // when the map first loads, initiate the type, year and month to default settings
+                var type = "Refuse";
+                var year = "2019";
+                var month = "01";
+                var color = '#FF6E00';
+                var colors = ['#FF6E00', '#276FE1', '#50D279', '#FF84BA'];
+
+                // when the map first loads, make a new trash layer with the default settings
+                makeNewTrashLayer();
+
+                // when a trash dropdown/slider is changed, change as appropriate 
+                // add event listeners here
+
+                // if year or month are changed, make a new trash layer
+                function makeNewTrashLayer() {
+                    // make tonnage url with the appropriate type, year, and month values
+                    var tonnageURL = "https://data.cityofnewyork.us/resource/ebb7-mvp5.geojson?month=" + year + "%20/%20" + month + "&$$app_token=" + openDataToken;
+
+                    // load tonnage data
+                    d3.json(tonnageURL).then(d => {
+                        // store data into objects
+                        const tonnage = d;
+
+                        // get tonnage per distict, into the disctrict object
+                        districts.features.forEach(district => {
+                            tonnage.features.forEach(ton => {
+                                population.features.forEach(pop => {
+                                    if (district.properties.districtcode === ton.properties.borough_id + ton.properties.communitydistrict && district.properties.districtcode === pop.properties.districtCode) {
+                                        // only load the appropriate trash type data
+                                        if (type === "Refuse") {
+                                            if (ton.properties.refusetonscollected != null) {
+                                                district.properties.tonsTrash = parseInt(ton.properties.refusetonscollected);
+                                            } else {
+                                                district.properties.tonsTrash = 0;
+                                            }
+                                        } else if (type === "Metal/Glass/Plastic") {
+                                            if (ton.properties.mgptonscollected != null) {
+                                                district.properties.tonsTrash = parseInt(ton.properties.mgptonscollected);
+                                            } else {
+                                                district.properties.tonsTrash = 0;
+                                            }
+                                        } else if (type === "Paper") {
+                                            if (ton.properties.papertonscollected != null) {
+                                                district.properties.tonsTrash = parseInt(ton.properties.papertonscollected);
+                                            } else {
+                                                district.properties.tonsTrash = 0;
+                                            }
+                                        } else if (type === "Compost") {
+                                            if (ton.properties.resorganicstons != null) {
+                                                district.properties.tonsTrash = parseInt(ton.properties.resorganicstons);
+                                            } else {
+                                                district.properties.tonsTrash = 0;
+                                            }
+                                            //console.log('type: ' + type);
+                                        }
+                                        // add population 
+                                        district.properties.population = parseInt(pop.properties._2010_population); // 2010 since all the years are 2010 or later
+                                    }
+                                })
+                            })
+                        })
+                        //console.log(districts)
+
+                        // find the max value collected in a disctrict
+                        let maxVal = d3.max(districts.features, m => m.properties.tonsTrash);
+
+                        // create a map source for this layer
+                        map.addSource('district-trash', { type: 'geojson', data: districts });
+
+                        // add the trash map layer
+                        map.addLayer({
+                            'id': 'district-trash-layer',
+                            'type': 'fill',
+                            'source': 'district-trash',
+                            'paint': {
+                                'fill-color': color,
+                                'fill-opacity': [
+                                    'interpolate',
+                                    ['linear'],
+                                    ['get', 'tonsTrash'],
+                                    0, 0,
+                                    maxVal, 1
+                                ],
+                            }
+                        })
+
+
+                        // initiate popups
+                        const popup = new mapboxgl.Popup();
+
+                        // add interactivity to see a popup with info about a district
+                        map.on('mousemove', 'district-trash-layer', (e) => {
+                            popup.setLngLat(e.lngLat)
+                                .setHTML("District: " + e.features[0].properties.district + "<br />"
+                                    + type + ": " + e.features[0].properties.tonsTrash + ' tons' + "<br />"
+                                    + "Population: " + e.features[0].properties.population)
+                                .addTo(map);
+                        })
+
+                        // change the cursor style to a UI indicator
+                        map.on('mouseenter', 'district-trash-layer', () => {
+                            map.getCanvas().style.cursor = 'pointer'
+                        })
+
+                        // change the cursor style back
+                        map.on('mouseleave', 'district-trash-layer', () => {
+                            map.getCanvas().style.cursor = ''
+                            popup.remove();
+                        })
+                    });
+                }
+                // add event listener for the trash type
+                var trashTypeOption = document.getElementById("trashTypeOption");
+                trashTypeOption.addEventListener('change', updateTrashType);
+                function updateTrashType() {
+                    // access dropdown value selected
+                    let index = trashTypeOption.value
+                    //console.log(trashTypeOption[index].innerHTML);
+                    // assign a new trash type according to selected value
+                    type = trashTypeOption[index].innerHTML;
+                    if (type === 'Refuse') {
+                        color = colors[0];
+                    } else if (type === 'Metal/Glass/Plastic') {
+                        color = colors[1];
+                    } else if (type === 'Paper') {
+                        color = colors[2];
+                    } else if (type === 'Compost') {
+                        color = colors[3];
+                    }
+
+                    // remove current trash layer
+                    map.removeLayer('district-trash-layer');
+                    map.removeSource('district-trash')
+                    // create new trash layer
+                    makeNewTrashLayer();
+                }
+
+                // add event listener for the year
+                var trashYearOption = document.getElementById("trashYearOption");
+                trashYearOption.addEventListener('change', updateTrashYear);
+                function updateTrashYear() {
+                    // access dropdown value selected
+                    let index = trashYearOption.value
+                    //console.log(trashYearOption[index].innerHTML);
+                    // assign a new year according to selected value
+                    year = trashYearOption[index].innerHTML;
+                    // remove current trash layer
+                    map.removeLayer('district-trash-layer');
+                    map.removeSource('district-trash')
+                    // create new trash layer
+                    makeNewTrashLayer();
+                }
+
+                // add event listener for the month
+                var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+                var monthSlider = document.getElementById("slider");
+                var monthLabel = document.getElementById('monthLabel')
+                monthSlider.addEventListener('change', updateTrashMonth);
+                function updateTrashMonth() {
+                    // access slider value selected
+                    let index = monthSlider.value;
+                    // change month label
+                    monthLabel.innerHTML = months[index];
+                    // assign a new month according to selected value
+                    let val = parseInt(monthSlider.value) + 1;
+                    if (monthSlider.value < 9) {
+                        month = "0" + val;
+                        console.log(month)
+                    } else {
+                        month = val.toString();
+                        console.log(month)
+                    }
+                    // remove current trash layer
+                    map.removeLayer('district-trash-layer');
+                    map.removeSource('district-trash')
+                    // create new trash layer
+                    makeNewTrashLayer();
+                }
+
+            });
+        }).catch(e => {
+            console.log(e);
+        })
+    }
+</script>
+
+</html>
