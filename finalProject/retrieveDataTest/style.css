@@ -1,0 +1,52 @@
+body{
+    font-family: 'Courier New', Courier, monospace;
+
+}
+
+.left-column{
+    display: inline-block;
+    margin-right: 1%;
+    width: 50%;
+    font-size: 0.9em;
+    line-height: 1.5em;
+}
+
+.right-column{
+    position: fixed;
+    top: 0px;
+
+    display: inline-block;
+    margin: 0%;
+    width: 50%;
+    height: 100vh;
+
+    background-color: whitesmoke;
+    
+}
+
+#theComplaints{
+    display: inline;
+}
+
+/* DROPDOWN BUTTONS*/
+.custom-select {
+position: relative;
+font-family: 'Monotype-PlantinHeadlineMTStd-MdCN';
+margin-bottom: 10px;
+}
+
+select{
+background-color: black;
+width: 25%;
+padding: 3px;
+padding-top: 5px;
+font-family:'Monotype-PlantinHeadlineMTStd-MdCN', sans-serif;
+font-size: 0.9em;
+color: white;
+letter-spacing: 0.25pt;
+border: 0;
+border-radius: 0;
+height: 30px;
+line-height: 1.5em;
+-webkit-appearance: none;
+}
