@@ -61,8 +61,9 @@ function init(){
                 var agency = complaint.agency; // or agency_name
                 var type = complaint.complaint_type;
                 var descriptor = complaint.descriptor;
-                //var sent = "On " + date + " a complaint was made to the " + agency + " regarding " + type + " - " + descriptor;
+                // var sent = "On " + date + " a complaint was made to the " + agency + " regarding " + type + " - " + descriptor;
                 var sent = agency + " received a complaint regarding " + type + " - " + descriptor + ".  ";
+                //var sent = agency + ": " + type + " - " + descriptor + ".  ";
                 //complaint.toPrint = sent;
                 totalComplaints += sent + ".  ";
     

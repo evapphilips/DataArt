@@ -1,0 +1,62 @@
+/* COLORS */
+/* 
+MANHATTAN - DARK: #69CBC2, LIGHT: #D6F3EF
+BROOKLYN - DARK: #ECB25D, LIGHT: #F3EBD6
+BRONX - DARK: #BDCB7A, LIGHT: #E0EDA1
+QUEENS - DARK: #BF9D9D, LIGHT: #DCCCCC
+STATEN ISLAND - DARK: #E9A482, LIGHT: #F8DFD2
+
+ANOTHER - DARK: #C1A9DE, LIGHT: #E0D6F7
+ */
+
+/* MAIN DIV CONTAINERS */
+*{
+    margin: 0;
+}
+.main-container{
+    position: relative;
+    /* display: inline-block;  */
+    width: 100%;
+    height: 100%;
+}
+
+.section-container{
+    display: inline-block;
+    width: 50%;
+    height: 100%;
+
+}
+.left-container{
+    position: relative;
+
+    background-color: #69CBC2;
+}
+
+.right-container{
+    position: absolute;
+
+    background-color: #D6F3EF;
+}
+
+.complaint-container{
+    background-color: red;
+}
+
+/* TITLES */
+
+.section-title{
+    text-align: center;
+    font-size: 20px;
+    font-style: bold;
+    text-transform: uppercase;
+    margin-top: 10px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.borough-title{
+    margin-top: 0px;
+    text-decoration: underline;
+}
+
+
+
