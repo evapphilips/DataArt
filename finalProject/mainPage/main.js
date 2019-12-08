@@ -3,7 +3,7 @@ window.addEventListener("load", init);
 function init(){
     
     // initiate voice 
-    var myVoice = new p5.Speech(); // new P5.Speech object
+    // var myVoice = new p5.Speech(); // new P5.Speech object
     
     // store API info
     var complaintURL = "https://data.cityofnewyork.us/resource/erm2-nwe9.json?borough="
@@ -50,6 +50,7 @@ function init(){
 
     // load complaint data 
     function updateComplaints(){
+        dataURL = complaintURL + borough + "&$$app_token=" + openDataToken;
         (d3.json(dataURL)).then(data => {
             // place raw data into object (we only want to use, date, agency, type, descriptor)
             const complaints = data;
@@ -73,7 +74,7 @@ function init(){
                 newComplaint.innerHTML = sent;
                 newComplaint.id = "theComplaints";
                 if(agency === "DSNY"){
-                    newComplaint.style.backgroundColor = "#008000";
+                    newComplaint.style.color = "black";
                 }
                 complaintDiv.appendChild(newComplaint)
             })

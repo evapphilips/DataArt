@@ -1,0 +1,197 @@
+/* SETUP FONTS */
+
+@font-face {
+    font-family:'Champion-HTF-Lightweight';
+    src: url('assets/fonts/Champion-HTF-Lightweight.eot');
+    src: url('assets/fonts/Champion-HTF-Lightweight.ttf');
+    format('truetype');
+}
+
+@font-face {
+    font-family:'Champion-HTF-MiddleWeight';
+    src: url('assets/fonts/Champion-HTF-Middleweight.eot');
+    src: url('assets/fonts/Champion-HTF-Middleweight.ttf');
+    format('truetype');
+}
+
+@font-face {
+    font-family:'Champion-HTF-WelterWeight';
+    src: url('assets/fonts/Champion-HTF-Welterweight.eot');
+    src: url('assets/fonts/Champion-HTF-Welterweight.ttf');
+    format('truetype');
+}
+
+@font-face {
+    font-family:'Monotype-PlantinHeadlineMTStd-MdCN';
+    src: url('assets/fonts/Monotype-PlantinHeadlineMTStd-MdCn.eot');
+    src: url('assets/fonts/Monotype-PlantinHeadlineMTStd-MdCn.ttf');
+    format('truetype');
+}
+
+/* SETUP PAGE */
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; 
+}
+
+html {
+    font-size: 62.5%; 
+}
+
+body {
+    box-sizing: border-box;
+
+    font-family: 'Champion-HTF-Lightweight';
+    font-size: 2rem;
+    letter-spacing: 0.1rem;
+}
+
+/* COLORS */
+/* 
+MANHATTAN - DARK: #69CBC2, LIGHT: #D6F3EF
+BROOKLYN - DARK: #ECB25D, LIGHT: #F3EBD6
+BRONX - DARK: #BDCB7A, LIGHT: #E0EDA1
+QUEENS - DARK: #BF9D9D, LIGHT: #DCCCCC
+STATEN ISLAND - DARK: #E9A482, LIGHT: #F8DFD2
+
+ANOTHER - DARK: #C1A9DE, LIGHT: #E0D6F7
+ */
+
+ /* MAIN CONTAINER */
+.left{
+    background-color: #69CBC2;
+}
+
+.right{
+    background-color: #D6F3EF;
+}
+
+
+.navbar {
+    overflow: hidden;
+    /* background-color: #333; */
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 10rem;
+}
+
+.main {
+    /* padding: .5rem; */
+    margin-top: 10rem;
+    
+    /* background-color: red; */
+}
+
+.left-main-container { 
+    display: inline-block; 
+    padding: .5rem;
+    width: 50vw; 
+    /* height: 100%;   */
+    
+    font-family: "Monotype-PlantinHeadlineMTStd-MdCN";
+    color: grey;
+    line-height: 1.2em;
+}
+
+.right-main-container {
+    display: inline-block; 
+    position: fixed; 
+    padding: .5rem;
+    width: 50vw; 
+    height: 100%; 
+}
+
+.left-heading-container{
+    display: inline-block;
+    width: 50vw;
+    height: 10rem;
+}
+
+.right-heading-container{
+    display: inline-block;
+    position: absolute;
+    width: 50vw;
+    height: 10rem
+}
+
+.section-title{
+    text-align: center;
+    font-size: 2rem;
+    text-transform: uppercase;
+    margin-top: 6rem;
+}
+
+/* DROPDOWN STYLE */
+.borough-label-container{
+    position: absolute;
+    top: 1rem;
+    left: 40vw;
+    width: 20vw;
+    border-style: none none solid none;
+}
+
+.borough-label-container:hover {
+    transform: translateY(-3px);
+    /* box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);  */
+}
+
+.borough-label-container:hover::after {
+      transform: scaleX(1.4) scaleY(1.6);
+      opacity: 0; 
+}
+
+.borough-label-container:active {
+    transform: translateY(-1px);
+
+    /* box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);  */
+}
+
+input, textarea, select, a { outline: none; }  /* get rid of ugly blue glow*/
+
+.borough-label{
+    position: absolute;
+    /* display: inline; */
+    /* text-align: left; */
+    left: 70%;
+    top: -.5rem;
+    font-size: 2rem;
+    margin-left: 1.2rem;
+    text-transform: uppercase;
+    -webkit-appearance: none;
+}
+
+select{
+    /* background-color: none; */
+    /* width: 25%; */
+    /* padding: 3px; */
+    /* padding-top: 5px; */
+    font-family:'Monotype-PlantinHeadlineMTStd-MdCN', sans-serif;
+    text-transform: uppercase;
+    margin-left: 2rem;
+    /* color: white; */
+    /* letter-spacing: 0.25pt; */
+    background-color: rgba(255,255,255,0);
+    border: 0;
+    border-radius: 0;
+    width: 85%;
+    font-size: 2rem;
+    /* height: 30px; */
+    /* line-height: 1.5em; */
+    -webkit-appearance: none;
+    box-shadow: nones;
+    }
+
+/* COMPLAINT ID */
+
+#theComplaints{
+    display: inline;
+}
+
+
+
+
