@@ -1,0 +1,95 @@
+/* SETUP FONTS */
+@font-face {
+    font-family:'Champion-HTF-Lightweight';
+    src: url('assets/fonts/Champion-HTF-Lightweight.eot');
+    src: url('assets/fonts/Champion-HTF-Lightweight.ttf');
+    format('truetype');
+}
+
+@font-face {
+    font-family:'Champion-HTF-MiddleWeight';
+    src: url('assets/fonts/Champion-HTF-Middleweight.eot');
+    src: url('assets/fonts/Champion-HTF-Middleweight.ttf');
+    format('truetype');
+}
+
+@font-face {
+    font-family:'Champion-HTF-WelterWeight';
+    src: url('assets/fonts/Champion-HTF-Welterweight.eot');
+    src: url('assets/fonts/Champion-HTF-Welterweight.ttf');
+    format('truetype');
+}
+
+@font-face {
+    font-family:'Champion-HTF-Heavyweight';
+    src: url('assets/fonts/Champion-HTF-Heavyweight.eot');
+    src: url('assets/fonts/Champion-HTF-Heavyweight.ttf');
+    format('truetype');
+}
+
+@font-face {
+    font-family:'Monotype-PlantinHeadlineMTStd-MdCN';
+    src: url('assets/fonts/Monotype-PlantinHeadlineMTStd-MdCn.eot');
+    src: url('assets/fonts/Monotype-PlantinHeadlineMTStd-MdCn.ttf');
+    format('truetype');
+}
+
+/* MENU BOTTOM BAR */
+#menu-container{
+    height: 12vh;
+    width: 200vw;
+    background-color: black;
+    z-index: 999;
+    bottom: -8vh;
+    position: fixed;
+}
+
+.zoom {
+    transition: transform 1s; /* Animation */
+    margin: 0 auto;
+    cursor: pointer;
+}
+  
+.zoom:hover {
+    /* transition: all 0.5s ease; */
+    transform: translate(0%, 6%);
+    /* transition: top ease 0.5s; */
+    /* transform: scale(2);  */
+}
+
+
+/*MENU*/
+#nav-menu{
+    display: none;
+    height: 100vh;
+}
+
+/*SLIDING ANIMATION IF WE WANT */
+/* .animateNav{
+    display: block;
+    background: black;
+    z-index: 3;
+    animation-name: slide;
+    animation-duration: 1s;
+    animation-timing-function: ease;
+    transform: translate(0, 40vh);
+} */
+
+
+/* @keyframes slide {
+    0% {
+      transform: translate(0, 0vh);
+    }
+    100% {
+      transform: translate(0, 50vh);
+    }
+  } */
+
+
+
+/* .zoom-img:hover{
+    -webkit-transform: scale(0.1);
+    -ms-transform: scale(0.1);
+    transform: scale(0);
+    transition: 5s ease;
+} */

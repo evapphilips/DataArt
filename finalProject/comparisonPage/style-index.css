@@ -1,0 +1,185 @@
+/* SETUP FONTS */
+
+@font-face {
+    font-family:'Champion-HTF-Lightweight';
+    src: url('assets/fonts/Champion-HTF-Lightweight.eot');
+    src: url('assets/fonts/Champion-HTF-Lightweight.ttf');
+    format('truetype');
+}
+
+@font-face {
+    font-family:'Champion-HTF-MiddleWeight';
+    src: url('assets/fonts/Champion-HTF-Middleweight.eot');
+    src: url('assets/fonts/Champion-HTF-Middleweight.ttf');
+    format('truetype');
+}
+
+@font-face {
+    font-family:'Champion-HTF-WelterWeight';
+    src: url('assets/fonts/Champion-HTF-Welterweight.eot');
+    src: url('assets/fonts/Champion-HTF-Welterweight.ttf');
+    format('truetype');
+}
+
+@font-face {
+    font-family:'Champion-HTF-Heavyweight';
+    src: url('assets/fonts/Champion-HTF-Heavyweight.eot');
+    src: url('assets/fonts/Champion-HTF-Heavyweight.ttf');
+    format('truetype');
+}
+
+@font-face {
+    font-family:'Monotype-PlantinHeadlineMTStd-MdCN';
+    src: url('assets/fonts/Monotype-PlantinHeadlineMTStd-MdCn.eot');
+    src: url('assets/fonts/Monotype-PlantinHeadlineMTStd-MdCn.ttf');
+    format('truetype');
+}
+
+
+html,body{
+    overflow: hidden;
+    margin: none;
+    padding: none;
+}
+
+/* CONTAINERS */
+#left-container{
+    z-index: -5;
+    position:fixed;
+    top: 0;
+    left: 0;
+    width: 50vw;
+    height: 100vh;
+    background-color: #BFC5BF;
+}
+
+#right-container{
+    z-index: -5;
+    position:fixed;
+    top: 0;
+    right: 0;
+    width: 50vw;
+    height: 100vh;
+    background-color: #DDE3DD;
+}
+
+#ny-header{
+    font-family: 'Champion-HTF-Heavyweight';
+    font-size: 0.875rem;
+    z-index: 2;
+    position: fixed;
+    text-transform: uppercase;
+    letter-spacing: 0.375pt;
+    text-align: center;
+    width: 6.5rem;
+    top: 2.25rem;
+    height: 1.75rem;
+    /* border: 1px solid red; */
+    border-bottom: 0.4em solid black;
+    margin: 0 auto;
+    left:46.5vw;
+}
+
+#title-div{
+    width: 100vw;
+    margin: 0 auto;
+    position: fixed;
+    top: 32vh;
+    text-align: center;
+}
+
+#title-text{
+    font-family: 'Champion-HTF-Middleweight';
+    font-size: 3.75rem;
+    line-height: 3.75rem;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+#start-div{
+    width: 10vw;
+    position: fixed;
+    top: 78vh;
+    left: 48vw;
+}
+
+#start-text{
+    font-family: "Monotype-PlantinHeadlineMTStd-MdCN";
+    font-size: 2rem;
+    line-height: 1.85rem;
+    text-align: center;
+    color: black;
+    text-decoration: none;
+}
+
+#start-text > a{
+    text-decoration: none;
+}
+
+a:hover{
+    opacity: 0.375;
+}
+
+
+/* TEXTURES */
+#sprain{
+    width: 45rem;
+    position: fixed;
+    top: -8vh;
+    left: -12vw;
+    z-index: -1;
+}
+
+#cuts{
+    width: 16rem;
+    position: fixed;
+    top: -20vh;
+    right: 20vw;
+}
+
+#fracture{
+    width: 14rem;
+    position: fixed;
+    right: 30vw;
+    top: 51vh;
+    z-index: -2;
+}
+
+#bruise{
+    width: 25rem;
+    position: fixed;
+    bottom: -13vh;
+    right: 18rem;
+    z-index: -1;
+}
+
+#foreign-body{
+    width: 5rem;
+    position: fixed;
+    bottom: 12vh;
+    left: 8vw;
+    z-index: -1;
+}
+
+#scratch{
+    width: 6rem;
+    position: fixed;
+    bottom: 21vh;
+    right: -2rem;
+}
+
+
+
+
+
+/* #underline{
+    z-index: 3;
+    position: absolute;
+    top: 8.5vh;
+    margin-left: 45%;
+    margin-right: 45%;
+}
+
+#underline > img{
+    width: 6.5em;
+} */

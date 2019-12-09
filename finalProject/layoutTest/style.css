@@ -26,6 +26,7 @@ ANOTHER - DARK: #C1A9DE, LIGHT: #E0D6F7
     height: 100%;
 
 }
+
 .left-container{
     position: relative;
 
@@ -34,7 +35,6 @@ ANOTHER - DARK: #C1A9DE, LIGHT: #E0D6F7
 
 .right-container{
     position: absolute;
-
     background-color: #D6F3EF;
 }
 

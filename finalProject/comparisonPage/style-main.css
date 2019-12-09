@@ -1,0 +1,752 @@
+/* SETUP FONTS */
+@font-face {
+    font-family:'Champion-HTF-Lightweight';
+    src: url('assets/fonts/Champion-HTF-Lightweight.eot');
+    src: url('assets/fonts/Champion-HTF-Lightweight.ttf');
+    format('truetype');
+}
+
+@font-face {
+    font-family:'Champion-HTF-MiddleWeight';
+    src: url('assets/fonts/Champion-HTF-Middleweight.eot');
+    src: url('assets/fonts/Champion-HTF-Middleweight.ttf');
+    format('truetype');
+}
+
+@font-face {
+    font-family:'Champion-HTF-WelterWeight';
+    src: url('assets/fonts/Champion-HTF-Welterweight.eot');
+    src: url('assets/fonts/Champion-HTF-Welterweight.ttf');
+    format('truetype');
+}
+
+@font-face {
+    font-family:'Champion-HTF-Heavyweight';
+    src: url('assets/fonts/Champion-HTF-Heavyweight.eot');
+    src: url('assets/fonts/Champion-HTF-Heavyweight.ttf');
+    format('truetype');
+}
+
+@font-face {
+    font-family:'Monotype-PlantinHeadlineMTStd-MdCN';
+    src: url('assets/fonts/Monotype-PlantinHeadlineMTStd-MdCn.eot');
+    src: url('assets/fonts/Monotype-PlantinHeadlineMTStd-MdCn.ttf');
+    format('truetype');
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar {
+    width: 1.25vw;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    /*box-shadow: inset 0 0 5px white; */
+    background: white;
+    /* border-radius: 10px; */
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #EFEFEF; 
+    /* border-radius: 10px; */
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: black;
+  }
+
+/* SETUP PAGE */
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; 
+}
+
+html {
+    font-size: 62.5%; 
+    overflow-x: hidden;
+}
+
+body {
+    box-sizing: border-box;
+    font-family: 'Champion-HTF-Lightweight';
+    font-size: 2rem;
+    letter-spacing: 0.1rem;
+}
+
+.navbar{
+    height: 15vh;
+}
+
+#bodyId{
+    z-index: -99 !important;
+}
+
+/* COLORS */
+/* 
+MANHATTAN - DARK: #69CBC2, LIGHT: #D6F3EF
+BROOKLYN - DARK: #ECB25D, LIGHT: #F3EBD6
+BRONX - DARK: #BDCB7A, LIGHT: #E0EDA1
+QUEENS - DARK: #BF9D9D, LIGHT: #DCCCCC
+STATEN ISLAND - DARK: #E9A482, LIGHT: #F8DFD2
+
+ANOTHER - DARK: #C1A9DE, LIGHT: #E0D6F7
+ */
+
+ /* MAIN CONTAINER */
+.left{
+    background-color: #9FCFC6;
+    width: 50vw;
+    z-index: -15;
+}
+
+.right{
+    background-color: #D6F3EF;
+}
+
+
+.navbar {
+    overflow: hidden;
+    /* background-color: #333; */
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 16rem;
+    z-index: 2;
+}
+
+.main {
+    /* padding: .5rem; */
+    margin-top:15vh;
+    padding-top: 2vh;
+    position:relative;
+}
+
+
+.left-main-container { 
+    display: inline-block; 
+    padding: .5rem;
+    width: 50vw; 
+    /* height: 100%;   */
+    background-color: #9FCFC6;
+    font-family: "Monotype-PlantinHeadlineMTStd-MdCN";
+    color: rgba(0,0,0,0.25);
+    line-height: 1.2em;
+    top: -25vh;
+    font-size: 3.125rem;
+    line-height: 3.75rem;
+}
+
+.right-main-container {
+    display: inline-block; 
+    position: fixed; 
+    padding: .5rem;
+    width: 50vw; 
+    height: 100%; 
+    z-index: -1;
+}
+
+.left-heading-container{
+    display: inline-block;
+    width: 50vw;
+    height: 20vh;
+    background-color: none;
+    z-index: -120;
+}
+
+.right-heading-container{
+    display: inline-block;
+    position: absolute;
+    width: 50vw;
+    height: 20vh;
+}
+
+.section-title{
+    text-align: center;
+    font-size: 2rem;
+    text-transform: uppercase;
+    margin-top: 8rem;
+    font-family: 
+}
+
+
+/* DROPDOWN STYLE */
+#boroughOption{
+    font-family: 'Champion-HTF-Heavyweight';
+    margin-top: 3vh;
+    text-align: center;
+    z-index: 50;
+    font-size: 1.45rem;
+    left: -1vw;
+    position: absolute;
+    padding-bottom: 1vh;
+    border-bottom:  0.45rem solid black;
+    letter-spacing: 0.5pt;
+}
+
+/* triangle*/
+.borough-label img{
+    padding-top: 1.5vh;
+    margin-left: 2vw;
+    margin-top: 3vh;
+    width: 1rem;
+    /* border: 1px solid red; */
+}
+
+.borough-label-container{
+    /* margin-top: 3rem; */
+    font-family: 'Champion-HTF-Heavyweight';
+    font-size: 1.45rem;
+    position: absolute;
+    top: 1rem;
+    left: 44vw;
+    right: 44vw;
+    margin: 0 auto;
+    width: 15vw;
+    /* border-bottom: 0.25em solid black; */
+    text-align: center;
+    z-index: 50;
+}
+
+.borough-label-container:hover {
+    /* transform: translateY(-3px); */
+    /* box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);  */
+}
+
+.borough-label-container:hover::after {
+      /* transform: scaleX(1.4) scaleY(1.6); */
+      opacity: 0; 
+}
+
+.borough-label-container:active {
+    /* transform: translateY(-1px); */
+    /* box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);  */
+}
+
+input, textarea, select, a { outline: none; }  /* get rid of ugly blue glow*/
+
+/* triange */
+.borough-label{
+    position: absolute;
+    /* display: inline; */
+    /* text-align: left; */
+    left: 70%;
+    top: -.5rem;
+    font-size: 2rem;
+    margin-left: 1.2rem;
+    text-transform: uppercase;
+    -webkit-appearance: none;
+}
+
+select{
+    /* background-color: none; */
+    /* width: 25%; */
+    /* padding: 3px; */
+    /* padding-top: 5px; */
+    font-family: 'Champion-HTF-Heavyweight';
+    text-align: center;
+    /* font-family:'Monotype-PlantinHeadlineMTStd-MdCN', sans-serif; */
+    text-transform: uppercase;
+    margin-left: 2rem;
+    /* color: white; */
+    /* letter-spacing: 0.25pt; */
+    background-color: rgba(255,255,255,0);
+    border: 0;
+    border-radius: 0;
+    width: 85%;
+    font-size: 1.5rem;
+    /* height: 30px; */
+    /* line-height: 1.5em; */
+    -webkit-appearance: none;
+    box-shadow: nones;
+    }
+
+
+
+/* COMPLAINT ID */
+#theComplaints{
+    display: inline;
+    text-transform: capitalize;
+}
+
+#complaintDiv{
+    padding: 3%;
+    z-index: 2!important;
+}
+
+
+/* MAP */
+#borough-map-stats{
+    border: 1px solid rgba(255,255,255,0);
+    height: 12vh;
+    width: 15vw;
+    position: fixed;
+    bottom: 6vh;
+    right: 1.5vw;
+    font-family: 'Monotype-PlantinHeadlineMTStd-MdCN';
+    color: black;
+    font-size: 1.55em;
+    letter-spacing: 0.1pt;
+    line-height: 0.85em;
+}
+
+.map-stats{
+    font-family: 'Monotype-PlantinHeadlineMTStd-MdCN';
+    color: black;
+    font-size: 1.5em;
+    letter-spacing: 0.1pt;
+}
+
+
+/* BRONX */ 
+#bronx-hover-map{
+    /* border: 1px turquoise solid; */
+    z-index: 10;
+    position: fixed;
+    width: 46vw;
+    height: 60vh;
+    top: 20vh;
+    right: 0;
+}
+
+
+.hover-bronx-div{
+    z-index: 12;
+    /* border: 1px turquoise solid; */
+    position: fixed;
+    color: rgba(255,255,255,0);
+}
+
+
+#sprain-bronx{
+    z-index:999;
+    position : absolute;
+    float: right;
+    top: 5vw;
+    right: 12vw; 
+    width: 15vw;
+    height: 15vw;
+}
+
+
+#bruise-bronx{
+    z-index:999;
+    position: absolute;
+    float: right;
+    top:28vw;
+    right: 24vw; 
+    width: 13vw;
+    height: 13vw;   
+}
+
+
+#cut-bronx{
+    z-index:999;
+    position: absolute;
+    float: right;
+    top: 12vw;
+    left: 4vw; 
+    width: 14vw;
+    height: 14vw;  
+}
+
+#scratch-bronx{
+    z-index:999;
+    position: absolute;
+    float: right;
+    top: 4vw;
+    left: 7vw; 
+    width: 7vw;
+    height: 7vw;  
+}
+
+#foreign-bronx{
+    z-index:999;
+    position: absolute;
+    float: right;
+    top: 28vw;
+    right: 14vw; 
+    width: 5vw;
+    height: 5vw;  
+}
+
+#fracture-bronx{
+    z-index:999;
+    position: absolute;
+    float: right;
+    top: 22vw;
+    right: 16vw; 
+    width: 8vw;
+    height: 6vw;  
+}
+
+#multiple-bronx{
+    z-index:999;
+    position: absolute;
+    float: right;
+    top: 4vw;
+    left: 14vw; 
+    width: 5vw;
+    height: 5vw;  
+}
+
+
+/* BROOKLYN */ 
+#brooklyn-hover-map{
+    /* border: 1px green solid; */
+    z-index: 10;
+    position: fixed;
+    width: 46vw;
+    height: 70vh;
+    top: 20vh;
+    right: 0;
+}
+
+
+.hover-brooklyn-div{
+    z-index: 12;
+    /* border: 1px green solid; */
+    position: fixed;
+    color: rgba(255,255,255,0);
+}
+
+#sprain-brooklyn{
+    z-index:990;
+    position : absolute;
+    float: right;
+    top: 20vw;
+    left: 5vw;
+    width: 22vw;
+    height: 17vw;
+}
+
+#cut-brooklyn{
+    z-index:991;
+    position: absolute;
+    float: right;
+    top: 2vw;
+    left: 6vw; 
+    width: 15vw;
+    height: 18vw;  
+}
+
+ #bruise-brooklyn{
+    z-index:992;
+    position: absolute;
+    float: right;
+    top: 9vw;
+    right: 12vw; 
+    width: 12vw;
+    height: 10vw;   
+}
+
+#scratch-brooklyn{
+    z-index:993;
+    position: absolute;
+    float: right;
+    top: 21vw;
+    right: 12vw; 
+    width: 5vw;
+    height: 7vw;  
+}
+
+#foreign-brooklyn{
+    z-index:994;
+    position: absolute;
+    float: right;
+    top: 16vw;
+    right: 8vw; 
+    width: 5vw;
+    height: 4vw;  
+}
+
+#fracture-brooklyn{
+    z-index:995;
+    position: absolute;
+    float: right;
+    top: 20vw;
+    right: 18vw; 
+    width: 8vw;
+    height: 6vw;  
+}
+
+#multiple-brooklyn{
+    z-index:999;
+    position: absolute;
+    float: right;
+    top: 34vw;
+    left: 10vw; 
+    width: 8vw;
+    height: 7vw;  
+}
+
+/* QUEENS */ 
+#queens-hover-map{
+    /* border: 1px chartreuse solid; */
+    z-index: 10;
+    position: fixed;
+    width: 46vw;
+    height: 70vh;
+    top: 20vh;
+    right: 0;
+}
+
+.hover-queens-div{
+    z-index: 12;
+    /* border: 1px chartreuse solid; */
+    position: fixed;
+    color: rgba(255,255,255,0);
+}
+
+#sprain-queens{
+    z-index:1;
+    position : absolute;
+    float: right;
+    top: 13vw;
+    left: 13vw;
+    width: 26vw;
+    height: 22vw;
+}
+
+#cut-queens{
+    z-index:2;
+    position: absolute;
+    float: right;
+    top: 1.7vw;
+    left: 5vw; 
+    width: 15vw;
+    height: 17vw;  
+}
+
+ #bruise-queens{
+    z-index: 3;
+    position: absolute;
+    float: right;
+    top: 1vw;
+    right: 12vw; 
+    width: 11vw;
+    height: 9vw;   
+}
+
+#scratch-queens{
+    z-index:993;
+    position: absolute;
+    float: right;
+    top: 34vw;
+    right: 30vw; 
+    width: 8vw;
+    height: 7vw;  
+}
+
+#foreign-queens{
+    z-index:3;
+    position: absolute;
+    float: right;
+    top: 1vw;
+    right: 22vw; 
+    width: 5vw;
+    height: 6vw;  
+}
+
+#fracture-queens{
+    z-index:4;
+    position: absolute;
+    float: right;
+    top: 10vw;
+    right: 13vw; 
+    width: 8vw;
+    height: 6vw;  
+}
+
+
+#multiple-queens{
+    z-index: 5;
+    position: absolute;
+    float: right;
+    top: 6vw;
+    right: 8vw; 
+    width: 7vw;
+    height: 6vw;  
+} 
+
+/* MANHATTAN */ 
+#manhattan-hover-map{
+    /* border: 1px saddlebrown solid; */
+    z-index: 10;
+    position: fixed;
+    width: 46vw;
+    height: 70vh;
+    top: 20vh;
+    right: 0;
+}
+
+.hover-manhattan-div{
+    z-index: 12;
+    /* border: 1px saddlebrown solid; */
+    position: fixed;
+    color: rgba(255,255,255,0);
+}
+
+#sprain-manhattan{
+    z-index:1;
+    position : absolute;
+    float: right;
+    top: 27vw;
+    left: 8vw;
+    width: 12vw;
+    height: 15vw;
+}
+
+#cut-manhattan{
+    z-index:2;
+    position: absolute;
+    float: right;
+    top: 16vw;
+    left: 14vw; 
+    width: 8vw;
+    height: 11vw;  
+}
+
+ #bruise-manhattan{
+    z-index: 3;
+    position: absolute;
+    float: right;
+    top: 0vw;
+    right: 17vw; 
+    width: 6vw;
+    height: 9vw;   
+}
+
+#scratch-manhattan{
+    z-index:4;
+    position: absolute;
+    float: right;
+    top: 14vw;
+    right: 21vw; 
+    width: 4vw;
+    height: 5vw;  
+}
+
+#foreign-manhattan{
+    z-index:5;
+    position: absolute;
+    float: right;
+    top: 10vw;
+    right: 22vw; 
+    width: 4vw;
+    height: 4vw;  
+}
+
+#fracture-manhattan{
+    z-index:6;
+    position: absolute;
+    float: right;
+    top: 25vw;
+    right: 29vw; 
+    width: 4vw;
+    height: 5vw;  
+}
+
+
+#multiple-manhattan{
+    z-index: 7;
+    position: absolute;
+    float: right;
+    top: 32vw;
+    right: 27vw; 
+    width: 5vw;
+    height: 4vw;  
+} 
+
+/* STATEN ISLAND */ 
+#staten-hover-map{
+    /* border: 1px purple solid; */
+    z-index: 10;
+    position: fixed;
+    width: 46vw;
+    height: 70vh;
+    top: 20vh;
+    right: 0;
+}
+
+.hover-staten-div{
+    z-index: 12;
+    /* border: 1px purple solid; */
+    position: fixed;
+    color: rgba(255,255,255,0);
+}
+
+#sprain-staten{
+    z-index:1;
+    position : absolute;
+    float: right;
+    top: 16vw;
+    left: 10vw;
+    width: 20vw;
+    height: 20vw;
+}
+
+#cut-staten{
+    z-index:2;
+    position: absolute;
+    float: right;
+    top: 14vw;
+    left: 18vw; 
+    width: 18vw;
+    height: 16vw;  
+}
+
+ #bruise-staten{
+    z-index: 3;
+    position: absolute;
+    float: right;
+    top: 4vw;
+    right: 10vw; 
+    width: 16vw;
+    height: 10vw;   
+}
+
+#scratch-staten{
+    z-index:4;
+    position: absolute;
+    float: right;
+    top: 10vw;
+    right: 26vw; 
+    width: 7vw;
+    height: 5vw;  
+}
+
+#foreign-staten{
+    z-index:5;
+    position: absolute;
+    float: right;
+    top: 10vw;
+    right: 9vw; 
+    width: 7vw;
+    height: 5vw;  
+}
+
+
+#fracture-staten{
+    z-index:6;
+    position: absolute;
+    float: right;
+    top: 32vw;
+    right: 30vw; 
+    width: 7vw;
+    height: 6vw;  
+}
+
+#multiple-staten{
+    z-index: 7;
+    position: absolute;
+    float: right;
+    top: 35vw;
+    left: 2vw; 
+    width: 5vw;
+    height: 5vw;  
+} 

@@ -1,0 +1,138 @@
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>Main Page</title>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <link rel="stylesheet" href="style-main.css">
+    <link rel="stylesheet" href="style-menu.css">
+    <script src="main.js"></script>
+    <script src="menu.js"></script>
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="left left-heading-container" id='complaintNav'>
+            <h1 class="section-title">311 complaints</h1>
+        </div>
+        <div class="right right-heading-container" id='injuryNav'>
+            <h1 class="section-title">Sanitation worker injuries</h1>
+        </div>
+
+        <div class="borough-label-container">
+            <select id="boroughOption">
+                <option value="0">The Bronx</option>
+                <option value="1">Brooklyn</option>
+                <option value="2">Queens</option>
+                <option value="3">Manhattan</option>
+                <option value="4">Staten Island</option>
+            </select>
+            <div class="borough-label"><img src="/assets/ui/triangle.svg" alt="dropdown triangle"></div>
+            <!-- <p class="borough-label"><img src="/assets/ui/triangle.svg" alt="dropdown triangle"></p> -->
+        </div>
+    </div>
+
+    <!--MENU BAR BOTTOM-->
+    <div id='menu-container' class = 'zoom'>
+        <div id = 'menu-about-div'>
+            <p id = 'menu-home'>Home</p>
+
+            <div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="main">
+        <!--LEFT CONTAINER-->
+        <div class="left left-main-container" id="complaintDiv"></div>
+
+        <!--RIGHT CONTAINER-->
+        <div class="right right-main-container" id="injuryDiv">
+            <img src="assets/maps/191204_Bronx_Injuries_v1.png" id="map-img" alt="borough" width="90%">
+            <div id='' class='map-injury'></div>
+        </div>
+    </div>
+
+    <!--MAPS + HOVER DIVS-->
+    <!--BRONX-->
+    <div id='bronx-hover-map' class='hover-map-container'>
+        <div id='sprain-bronx' class='hover-bronx-div'></div>
+        <div id='bruise-bronx' class='hover-bronx-div'></div>
+        <div id='cut-bronx' class='hover-bronx-div'></div>
+        <div id='scratch-bronx' class='hover-bronx-div'></div>
+        <div id='foreign-bronx' class='hover-bronx-div'></div>
+        <div id='fracture-bronx' class='hover-bronx-div'></div>
+        <div id='multiple-bronx' class='hover-bronx-div'></div>
+    </div>
+
+    <!--BROOKLYN-->
+    <div id='brooklyn-hover-map' class='hover-map-container'>
+        <div id='sprain-brooklyn' class='hover-brooklyn-div'></div>
+        <div id='bruise-brooklyn' class='hover-brooklyn-div'></div>
+        <div id='cut-brooklyn' class='hover-brooklyn-div'></div>
+        <div id='scratch-brooklyn' class='hover-brooklyn-div'></div>
+        <div id='foreign-brooklyn' class='hover-brooklyn-div'></div>
+        <div id='fracture-brooklyn' class='hover-brooklyn-div'></div>
+        <div id='multiple-brooklyn' class='hover-brooklyn-div'></div>
+    </div>
+
+    <!--QUEENS-->
+    <div id='queens-hover-map' class='hover-map-container'>
+        <div id='sprain-queens' class='hover-queens-div'></div>
+        <div id='bruise-queens' class='hover-queens-div'></div>
+        <div id='cut-queens' class='hover-queens-div'></div>
+        <div id='scratch-queens' class='hover-queens-div'></div>
+        <div id='foreign-queens' class='hover-queens-div'></div>
+        <div id='fracture-queens' class='hover-queens-div'></div>
+        <div id='multiple-queens' class='hover-queens-div'></div>
+    </div>
+
+    <!--MANHATTAN-->
+    <div id='manhattan-hover-map' class='hover-map-container'>
+        <div id='sprain-manhattan' class='hover-manhattan-div'></div>
+        <div id='bruise-manhattan' class='hover-manhattan-div'></div>
+        <div id='cut-manhattan' class='hover-manhattan-div'></div>
+        <div id='scratch-manhattan' class='hover-manhattan-div'></div>
+        <div id='foreign-manhattan' class='hover-manhattan-div'></div>
+        <div id='fracture-manhattan' class='hover-manhattan-div'></div>
+        <div id='multiple-manhattan' class='hover-manhattan-div'></div>
+    </div>
+
+    <!--STATEN ISLAND-->
+    <div id='staten-hover-map' class='hover-map-container'>
+        <div id='sprain-staten' class='hover-staten-div'></div>
+        <div id='bruise-staten' class='hover-staten-div'></div>
+        <div id='cut-staten' class='hover-staten-div'></div>
+        <div id='scratch-staten' class='hover-staten-div'></div>
+        <div id='foreign-staten' class='hover-staten-div'></div>
+        <div id='fracture-staten' class='hover-staten-div'></div>
+        <div id='multiple-staten' class='hover-staten-div'></div>
+    </div>
+
+    <!--STATS-->
+    <div id='map-stats'>
+        <p id='borough-map-stats' class='map-stats'></p>
+    </div>
+
+</body>
+
+</html>
+
+
+
+<!--
+
+
+    <div id='brooklyn-hover-map' class= 'hover-map-container'>
+        <div id='sprain-brooklyn' class='hover-div'></div>
+        <div id='bruise-brooklyn' class='hover-div'></div>
+        <div id='cut-brooklyn' class='hover-div'></div>
+        <div id='scratch-brooklyn' class='hover-div'></div>
+        <div id='foreign-brooklyn' class='hover-div'></div>
+        <div id='fracture-brooklyn' class='hover-div'></div>
+        <div id='multiple-brooklyn' class='hover-div'></div>
+    </div> 
+
+-->
