@@ -15,3 +15,6 @@
 - [100 Days of Gernative Patterns, Visual 2](https://evapphilips.github.io/DataArt/week2&3/patternVisuals/patternCircleGraph/)
 - [100 Days of Analog Food Porn, Visual 1](https://evapphilips.github.io/DataArt/week2&3/foodVisuals/foodPostedVsLikes/)
 - [100 Days of Analog Food Porn, Visual 2](https://evapphilips.github.io/DataArt/week2&3/foodVisuals/foodCircleGraph/)
+
+#### Week 11-13: Complaint vs Injury
+- [Webpage](https://evapphilips.github.io/DataArt/finalProject/comparisonPage/)
