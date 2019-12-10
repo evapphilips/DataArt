@@ -33,15 +33,32 @@
     </div>
 
     <!--MENU BAR BOTTOM-->
-    <div id='menu-container' class = 'zoom'>
-        <div id = 'menu-about-div'>
-            <p id = 'menu-home'>Home</p>
+    <div id='menu-container' class='zoom'>
+        <div id = 'menu-triangle-div'><img src="assets/ui/gray_triangle.svg" id='menu-triangle' alt="open"></div>
+        <div id='menu-about-div'>
 
-            <div>
+            <!--MENU HOME-->
+            <div id='menu-home-div'>
+                <a href="index.html" id='menu-home'>Home</a>
+            </div>
 
+            <!--MENU BLURB-->
+            <div id='menu-about-div'>
+                <div id='about-div'>
+                    <p id='about-text'>Garbage collection is the fifth most dangerous job in America. In New York City,
+                        the citizen's complaints are heard through 311 calls, but sanitation workers aren't given the
+                        same opportunity to have their experience recognized. What does it look like to see these two
+                        perspectives, those who complain and those who are physically impacted, side-by-side?
+                    </p>
+                </div>
             </div>
         </div>
-
+        <!--DATA BIBLIOGRAPHY-->
+        <div id='dataset-div'>
+            <p id='dataset-text'> The most recent 311 calls from each borrough are taken from NYC Open Data.
+                The injury dataset for Jan - Nov 2019 was obtained from DSNY.
+            </p>
+        </div>
     </div>
 
     <div class="main">
@@ -51,7 +68,7 @@
         <!--RIGHT CONTAINER-->
         <div class="right right-main-container" id="injuryDiv">
             <img src="assets/maps/191204_Bronx_Injuries_v1.png" id="map-img" alt="borough" width="90%">
-            <div id='' class='map-injury'></div>
+            <div class='map-injury'></div>
         </div>
     </div>
 

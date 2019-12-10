@@ -29,7 +29,7 @@ function init() {
     let mapImg = document.getElementById('map-img');
     //get boroughs
     let bronx = document.getElementById("bronx-hover-map");
-    let brooklyn = document.getElementById("brooklyn-hover-map"); 
+    let brooklyn = document.getElementById("brooklyn-hover-map");
     let queens = document.getElementById('queens-hover-map');
     let manhattan = document.getElementById('manhattan-hover-map');
     let staten = document.getElementById('staten-hover-map');
@@ -39,10 +39,12 @@ function init() {
     manhattan.style.visibility = 'hidden';
     staten.style.visibility = 'hidden';
     bronxMapData();
-    
+
+
     // access dropdown and add a event listener to it
     var boroughDropdown = document.getElementById("boroughOption");
     boroughDropdown.addEventListener("change", changeBorough);
+
 
     //when you select a new borough, update the complaints
     function changeBorough() {
@@ -55,16 +57,12 @@ function init() {
             var oldComplaint = document.getElementById("theComplaints")
             // document.body.removeChild(oldComplaint);
             oldComplaint.remove();
-            
-            
         }
 
         // change borough value
         var index = boroughDropdown.value;
         borough = boroughChoices[index];
         // console.log(borough)
-        
-        
 
         //get boroughs
         let bronx = document.getElementById("bronx-hover-map");
@@ -72,7 +70,6 @@ function init() {
         let queens = document.getElementById('queens-hover-map');
         let manhattan = document.getElementById('manhattan-hover-map');
         let staten = document.getElementById('staten-hover-map');
-
 
         //when borough changes, change style + map data
         if (borough === 'BRONX') {
@@ -123,7 +120,15 @@ function init() {
             queens.style.visibility = 'hidden';
 
             statenMapData();
-        } 
+        } else if (borough === 'BRONX') {
+            console.log('bronx')
+            /*hide other boroughs divs*/
+            brooklyn.style.visibility = 'hidden';
+            queens.style.visibility = 'hidden';
+            manhattan.style.visibility = 'hidden';
+            staten.style.visibility = 'hidden';
+        }
+
 
         //add new complaints
         updateComplaints();
@@ -165,13 +170,17 @@ function init() {
 
             // access paragraph element
             // var para = document.getElementById("paragraphComplaints");
-            // para.innerHTML = paraComplaints;  
-
+            // para.innerHTML = paraComplaints;   
         })
 
-
-
     }
+
+    // //get documents for dom
+    // let complaintDiv = document.getElementById('complaintDiv');
+    // let complaintNav = document.getElementById('complaintNav');
+    // let injuryDiv = document.getElementById('injuryDiv');
+    // let injuryNav = document.getElementById('injuryNav');
+    // let mapImg = document.getElementById('map-img');
 
     /* SHOW BRONX INJURY DATA*/
     function bronxMapData() {

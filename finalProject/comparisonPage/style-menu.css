@@ -36,8 +36,8 @@
 
 /* MENU BOTTOM BAR */
 #menu-container{
-    height: 12vh;
-    width: 200vw;
+    height: 14vh;
+    width: 100vw;
     background-color: black;
     z-index: 999;
     bottom: -8vh;
@@ -45,23 +45,172 @@
 }
 
 .zoom {
-    transition: transform 1s; /* Animation */
+    transition: transform 0.5s; /* Animation */
     margin: 0 auto;
     cursor: pointer;
 }
   
 .zoom:hover {
     /* transition: all 0.5s ease; */
-    transform: translate(0%, 6%);
+    transform: translate(0%, -3%);
     /* transition: top ease 0.5s; */
     /* transform: scale(2);  */
 }
 
 
 /*MENU*/
+
+/* div{
+    border: 1px red solid;
+} */
+
+
 #nav-menu{
     display: none;
     height: 100vh;
+}
+
+#menu-container{
+    text-align: center;
+    width: 100vw;
+}
+
+#menu-about-div{
+    padding: 1%;
+    margin-top: 2vh;
+    text-align: center;
+}
+
+#menu-home-div{
+    padding-bottom: 1vh;
+    /* border: red solid 1px; */
+    visibility: hidden;
+}
+
+#menu-home{
+    font-family: 'Champion-HTF-Heavyweight';
+    color: white;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    text-align: center;
+    text-decoration: none;
+    padding-bottom: 1.5vh;
+    display: inline-block;
+    width: 6rem;
+    border-bottom: 0.5rem solid white;
+}
+
+#home-white-underline{
+    width: 6rem;
+    margin: 0 auto;
+}
+
+#menu-home:hover{
+    color: rgba(255,255,255,0.75);
+}
+
+#menu-x{
+    position: absolute;
+    z-index: 2;
+    right: 3vw;
+    top: 3vh;
+    width: 2.25rem;
+    display: inline-block;
+    /* border: 1px solid red; */
+}
+
+#menu-x:hover{
+    fill: rgba(255,255,255,0.75);
+}
+
+
+/* ABOUT SECTION */
+
+#menu-about-div{
+    width: 100%;
+    text-align: center;
+    padding-top: 1vw;
+}
+
+#about-div{
+    width: 72vw;
+    margin-left: 12%;
+}
+
+#about-text{
+    padding-top: 3rem;
+    font-family: 'Monotype-PlantinHeadlineMTStd-MdCN';
+    color: white;
+    font-size: 3rem;
+    line-height: 3.125rem;
+    letter-spacing: 0.5pt;
+}
+
+#dataset-div{
+    border-top: 1px white solid;
+    height: 6vw;
+    position: relative;
+    bottom: -6vw;
+    left: 0;
+    padding-top: 2vw;
+    padding-bottom: 3vw;
+    background-color:black;
+}
+
+#dataset-text{
+    font-family: 'Champion-HTF-MiddleWeight';
+    color: white;
+    text-transform: uppercase;
+    font-size: 1rem;
+    line-height: 1.2rem;
+    letter-spacing: 1pt;
+}
+
+
+/* MENU TRIANGLE */
+
+#menu-triangle{
+    /* padding-top: 2vh;
+    padding-bottom: 2vh; */
+    margin-top: 1.5rem;
+    width: 1.25rem;
+}
+
+
+/* TRIANGLE ROTATE ANIMATION */
+/* #menu-triangle {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    border: 6px double #1a1a1a;
+} */
+
+.rotated-image {
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg)
+  }
+
+.back-to-og-image {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg)
+}
+
+ @keyframes rotate {
+    0% { 
+        -moz-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    100% {
+        -moz-transform: rotate(90deg);
+        -webkit-transform: rotate(90deg);
+        -o-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+        transform: rotate(90deg);
+    }
 }
 
 /*SLIDING ANIMATION IF WE WANT */
